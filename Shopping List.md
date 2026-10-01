@@ -7,4 +7,3 @@ Groceries for the week: added at home, ticked off at the shop.
 * [ ] Tomatoes
 * [ ] Eggs
 * [ ] Basil
-* [ ] test

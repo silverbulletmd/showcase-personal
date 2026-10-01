@@ -29,8 +29,14 @@ command.define {
   run = function()
     local title = editor.prompt "Which book?"
     if not title or title == "" then return end
-    local author = editor.prompt "Who wrote it?"
-    space.writePage(title, "---\ntags: book\nauthor: " .. (author or "") .. "\nstatus: to read\n---\n")
+    local author = editor.prompt "Who wrote it?" or ""
+    space.writePage(title, table.concat({
+      "---",
+      "tags: book",
+      "author: " .. author,
+      "status: to read",
+      "---",
+    }, "\n"))
     editor.navigate(title)
   end,
 }
