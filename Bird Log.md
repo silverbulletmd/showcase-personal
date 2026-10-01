@@ -9,7 +9,7 @@ Birds spotted on [[Photo Walks]], one line per sighting.
 
 Best at first light:
 ${query[[
-  from b = index.items("bird")
+  from b = index.items "bird"
   where b.light == "early"
   select {
     Bird = b.name,
