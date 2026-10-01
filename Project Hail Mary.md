@@ -1,6 +1,6 @@
 ---
 tags: book
 author: Andy Weir
-status: to read
+status: reading
 ---
-Fiction break. Several people insist.
+Fiction break. Jo insists.

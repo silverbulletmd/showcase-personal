@@ -1,6 +1,6 @@
 ---
 tags: person
 ---
-Friend and colleague; lends camera gear and never lets me forget it.
+Friend and colleague on Driftwood; lends camera gear and never lets me forget it.
 
-Still have his tripod from the river walk on [[Journal/2026-09-28|2026-09-28]].
+Still have the tripod he lent me on [[Journal/2026-09-24|24 September]].

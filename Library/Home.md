@@ -72,12 +72,13 @@ function home.tiles()
   local journalDays = query[[
     from p = index.pages()
     where p.name:startsWith "Journal/"
+    order by p.name desc
   ]]
   return widget.htmlBlock(dom.div {
     class = "home home-tiles",
     tile(#openTasks, "open tasks", "index"),
     tile(finished, "books finished", "Reading List"),
-    tile(#journalDays, "journal days", "Journal/2026-09-28"),
+    tile(#journalDays, "journal days", journalDays[1].name),
     dom.a {
       class = "home-tile home-tile-wide",
       onclick = go(reading),

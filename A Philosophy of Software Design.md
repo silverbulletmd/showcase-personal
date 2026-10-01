@@ -1,7 +1,7 @@
 ---
 tags: book
 author: John Ousterhout
-status: reading
+status: finished
 rating: 5
 ---
-Re-reading. Deep modules, shallow interfaces: the framing I keep coming back to for Driftwood’s importer.
+Re-read it in August. Deep modules, shallow interfaces: the framing I keep coming back to for Driftwood’s importer.
