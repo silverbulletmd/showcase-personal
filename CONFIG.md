@@ -1,6 +1,6 @@
 #meta
 
-Space configuration: the page picker docked on the left, an icon for books, ideas and people, and clicking a tag opens the page that collects it.
+Space configuration: the page picker docked on the left, an icon for books, ideas and people, clicking a tag opens the page that collects it, and a command to add a book.
 
 ```space-lua
 config.set("view.defaults", {
@@ -22,4 +22,16 @@ local LIGHTBULB = [[<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
 tag.define { name = "book", tagPage = "Reading List", transform = icon "book" }
 tag.define { name = "idea", tagPage = "Ideas", transform = icon(LIGHTBULB) }
 tag.define { name = "person", transform = icon "user" }
+
+-- Ask for a title and author, and start a page for the book; the Reading List picks it up
+command.define {
+  name = "Book: Add",
+  run = function()
+    local title = editor.prompt "Which book?"
+    if not title or title == "" then return end
+    local author = editor.prompt "Who wrote it?"
+    space.writePage(title, "---\ntags: book\nauthor: " .. (author or "") .. "\nstatus: to read\n---\n")
+    editor.navigate(title)
+  end,
+}
 ```
