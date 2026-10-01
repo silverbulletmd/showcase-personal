@@ -1,46 +1,44 @@
-Hello 👋!
 
-Welcome to the wondrous world of SilverBullet. A world that once you discover and appreciate, you’ll never want to leave.
+${home.greeting "Sam"}
 
-_One of us!_
+${home.actions()}
 
-If you’re confused and don’t know what to do, have a look at the [Manual](https://silverbullet.md/Manual), or perhaps more specifically, the [Getting Started](https://silverbullet.md/Getting%20Started) page. Got questions? Head over to [the community forums](https://community.silverbullet.md/).
+${home.tiles()}
 
-This page serves purely as a starting point to not start with a blank slate. Feel free to ditch it completely or adjust it to your needs. This space is fully yours. Own it.
+# This week
+${home.journal()}
 
-# Recent quick notes
-${widgets.commandButton("Create quick note", "Quick Note")}
+# Projects
+${query[[
+  from p = index.contentPages "project"
+  order by p.name
+  select templates.pageItem(p)
+]]}
 
-${some(query[[
-  from p = index.subPages("Inbox")
-  order by p.lastModified desc
-  limit 10 select templates.fullPageItem(p)
-]]) or "_No quick notes yet!_"}
+# Lists
+${query[[
+  from p = index.contentPages "list"
+  order by p.name
+  select templates.pageItem(p)
+]]}
 
-# Recent journal entries
-${widgets.commandButton("Today's entry", "Journal: Today")}
+# People
+${query[[
+  from p = index.contentPages "person"
+  order by p.name select templates.pageItem(p)
+]]}
 
-${some(query[[
-  from j = index.pages(config.get("journal.tag"))
-  where j.tag == "page"
-  order by j.date desc
-  limit 14
-  select templates.pageItem(j)
-]]) or "_No journal entries yet!_"}
+# [[Ideas]]
+${query[[
+  from p = index.contentPages "idea"
+  order by p.name
+  select templates.pageItem(p)
+]]}
 
-# Recent incomplete tasks
-${some(query[[
+# Up next
+${query[[
   from t = index.tasks()
   where not t.done
-  order by t.pageLastModified
-  desc limit 10
+  order by t.page desc limit 3
   select templates.taskItem(t)
-]]) or "_All tasks done!_"}
-
-# Recently modified pages
-${query[[
-  from p = index.contentPages()
-  order by p.lastModified desc
-  limit 10
-  select templates.fullPageItem(p) 
 ]]}
