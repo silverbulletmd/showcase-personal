@@ -5,9 +5,6 @@ ${home.actions()}
 
 ${home.tiles()}
 
-# This week
-${home.journal()}
-
 # Projects
 ${query[[
   from p = index.contentPages "project"

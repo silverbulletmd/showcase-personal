@@ -60,17 +60,6 @@ function home.tiles()
     dom.a { class = "home-tile home-tile-wide", href = "/" .. reading, dom.span { "Reading now" }, dom.em { reading } },
   })
 end
-
-function home.journal()
-  local days = query[[from p = index.pages() where p.name:startsWith("Journal/") order by p.name desc limit 6 select p.name]]
-  local chips = {}
-  for _, name in ipairs(days) do
-    local y, m, d = name:match "(%d+)-(%d+)-(%d+)"
-    local t = os.time { year = tonumber(y), month = tonumber(m), day = tonumber(d), hour = 12 }
-    table.insert(chips, dom.a { class = "home-day", href = "/" .. name, dom.span { os.date("%a", t) }, dom.strong { tostring(tonumber(d)) } })
-  end
-  return widget.htmlBlock(dom.div { class = "home home-days", table.unpack(chips) })
-end
 ```
 
 # Style
@@ -156,37 +145,4 @@ html:root {
   font-weight: 600;
 }
 
-/* This week’s journal days; today’s is filled in */
-.home-days {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
-}
-.home-day {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 8px 0;
-  border-radius: 10px;
-  border: 1px solid #bfdbfe;
-  text-decoration: none !important;
-  color: #1e3a8a !important;
-}
-.home-day span {
-  font-size: 0.75em;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #2563eb;
-}
-.home-day strong {
-  font-size: 1.5em;
-}
-.home-day:first-child {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #fff !important;
-}
-.home-day:first-child span {
-  color: #dbeafe;
-}
 ```
