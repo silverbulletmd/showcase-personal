@@ -6,6 +6,11 @@ Sam’s home page: a greeting, buttons for the things he does every day, and a f
 ```space-lua
 home = {}
 
+-- Widget links open pages through editor.navigate, so they work wherever the space is served
+local function go(ref)
+  return function() editor.navigate(ref) end
+end
+
 function home.greeting(name)
   local hour = tonumber(os.date "%H")
   local part = hour < 12 and "morning" or hour < 18 and "afternoon" or "evening"
@@ -37,7 +42,7 @@ end
 local function tile(value, label, page)
   return dom.a {
     class = "home-tile",
-    href = "/" .. page,
+    onclick = go(page),
     dom.strong {
       tostring(value)
     },
@@ -57,7 +62,7 @@ function home.tiles()
     tile(#query[[from t = index.tasks() where not t.done]], "open tasks", "index"),
     tile(finished, "books finished", "Reading List"),
     tile(#query[[from p = index.pages() where p.name:startsWith("Journal/")]], "journal days", "Journal/2026-09-28"),
-    dom.a { class = "home-tile home-tile-wide", href = "/" .. reading, dom.span { "Reading now" }, dom.em { reading } },
+    dom.a { class = "home-tile home-tile-wide", onclick = go(reading), dom.span { "Reading now" }, dom.em { reading } },
   })
 end
 ```
@@ -145,4 +150,9 @@ html:root {
   font-weight: 600;
 }
 
+
+/* Widget links navigate on click, so give them a pointer */
+.home a {
+  cursor: pointer;
+}
 ```
