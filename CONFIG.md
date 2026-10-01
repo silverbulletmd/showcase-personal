@@ -1,6 +1,6 @@
 #meta
 
-Space configuration: the page picker docked on the left, an icon for books, ideas and people, clicking a tag opens the page that collects it, and a command to add a book.
+Space configuration: the page picker docked on the left, an icon for books, ideas and people, and clicking a tag opens the page that collects it.
 
 ```space-lua
 config.set("view.defaults", {
@@ -37,25 +37,5 @@ tag.define {
 tag.define {
   name = "person",
   transform = icon "user",
-}
-
--- Ask for a title and author, and start a page for the book; the Reading List picks it up
-command.define {
-  name = "Book: Add",
-  run = function()
-    local title = editor.prompt "Which book?"
-    if not title or title == "" then
-      return
-    end
-    local author = editor.prompt "Who wrote it?" or ""
-    space.writePage(title, table.concat({
-      "---",
-      "tags: book",
-      "author: " .. author,
-      "status: to read",
-      "---",
-    }, "\n"))
-    editor.navigate(title)
-  end,
 }
 ```

@@ -36,6 +36,7 @@ ${query[[
 ${query[[
   from t = index.tasks()
   where not t.done
-  order by t.page desc limit 3
+  order by t.page desc
+  limit 3
   select templates.taskItem(t)
 ]]}
