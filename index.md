@@ -5,6 +5,15 @@ ${home.actions()}
 
 ${home.tiles()}
 
+# Journal
+${query[[
+  from p = index.pages()
+  where p.name:startsWith "Journal/"
+  order by p.name desc
+  limit 5
+  select templates.pageItem(p)
+]]}
+
 # Projects
 ${query[[
   from p = index.contentPages "project"
