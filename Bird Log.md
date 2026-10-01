@@ -8,4 +8,11 @@ Birds spotted on [[Photo Walks]], one line per sighting.
 * Little egret in the reeds [count: 2] [light: early] #bird
 
 Best at first light:
-${query[[from b = index.items("bird") where b.light == "early" select {Bird = b.name, Count = b.count}]]}
+${query[[
+  from b = index.items("bird")
+  where b.light == "early"
+  select {
+    Bird = b.name,
+    Count = b.count,
+  }
+]]}

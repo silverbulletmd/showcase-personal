@@ -8,16 +8,19 @@ home = {}
 
 -- Widget links open pages through editor.navigate, so they work wherever the space is served
 local function go(ref)
-  return function() editor.navigate(ref) end
+  return function()
+    editor.navigate(ref)
+  end
 end
 
 function home.greeting(name)
   local hour = tonumber(os.date "%H")
   local part = hour < 12 and "morning" or hour < 18 and "afternoon" or "evening"
+  local date = os.date "%A" .. " " .. tonumber(os.date "%d") .. " " .. os.date "%B"
   return widget.htmlBlock(dom.div {
     class = "home home-greeting",
     dom.h1 { "Good " .. part .. ", " .. name },
-    dom.p { os.date "%A" .. " " .. tonumber(os.date "%d") .. " " .. os.date "%B" },
+    dom.p { date },
   })
 end
 
@@ -27,7 +30,7 @@ local function action(label, command)
     onclick = function()
       editor.invokeCommand(command)
     end,
-    label
+    label,
   }
 end
 
@@ -43,26 +46,44 @@ local function tile(value, label, page)
   return dom.a {
     class = "home-tile",
     onclick = go(page),
-    dom.strong {
-      tostring(value)
-    },
-    dom.span { label }
+    dom.strong { tostring(value) },
+    dom.span { label },
   }
 end
 
 function home.tiles()
-  local books = query[[from p = index.contentPages("book") select p]]
+  local books = query[[
+    from p = index.contentPages "book"
+    select p
+  ]]
   local reading, finished = "–", 0
   for _, b in ipairs(books) do
-    if b.status == "reading" then reading = b.name end
-    if b.status == "finished" then finished = finished + 1 end
+    if b.status == "reading" then
+      reading = b.name
+    end
+    if b.status == "finished" then
+      finished = finished + 1
+    end
   end
+  local openTasks = query[[
+    from t = index.tasks()
+    where not t.done
+  ]]
+  local journalDays = query[[
+    from p = index.pages()
+    where p.name:startsWith "Journal/"
+  ]]
   return widget.htmlBlock(dom.div {
     class = "home home-tiles",
-    tile(#query[[from t = index.tasks() where not t.done]], "open tasks", "index"),
+    tile(#openTasks, "open tasks", "index"),
     tile(finished, "books finished", "Reading List"),
-    tile(#query[[from p = index.pages() where p.name:startsWith("Journal/")]], "journal days", "Journal/2026-09-28"),
-    dom.a { class = "home-tile home-tile-wide", onclick = go(reading), dom.span { "Reading now" }, dom.em { reading } },
+    tile(#journalDays, "journal days", "Journal/2026-09-28"),
+    dom.a {
+      class = "home-tile home-tile-wide",
+      onclick = go(reading),
+      dom.span { "Reading now" },
+      dom.em { reading },
+    },
   })
 end
 ```
@@ -149,7 +170,6 @@ html:root {
   font-size: 1.05em;
   font-weight: 600;
 }
-
 
 /* Widget links navigate on click, so give them a pointer */
 .home a {
