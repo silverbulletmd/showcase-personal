@@ -70,8 +70,7 @@ function home.tiles()
     where not t.done
   ]]
   local journalDays = query[[
-    from p = index.pages()
-    where p.name:startsWith "Journal/"
+    from p = index.pages "journal"
     order by p.name desc
   ]]
   return widget.htmlBlock(dom.div {
