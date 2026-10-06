@@ -1,6 +1,6 @@
 ---
 tags: book
-author:
+author: Zef
 status: to read
 ---
-Why I want to read it: 
+Why I want to read it: Cool one
