@@ -1,7 +1,7 @@
 ---
 tags: finance
 ---
-A cushion for the unexpected. My example goal is three months of essential bills; I’m leaving eating out, hobbies and subscriptions out of that target.
+A cushion for the unexpected. My example goal is three months of essential bills. I’m leaving eating out, hobbies and subscriptions out of that target.
 
 [[Money|Overview]] · [[Monthly Budget]]
 
