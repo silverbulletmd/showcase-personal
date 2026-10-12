@@ -11,14 +11,12 @@ Take-home pay: €${salary = 3200}
 # What goes out
 Edit a number below and pause for autosave. The totals and the emergency fund projection update together.
 
-| Expense | Monthly amount (€) |
-| --- | ---: |
-| Rent | ${rent = 1150} |
-| Utilities | ${utilities = 180} |
-| Groceries | ${groceries = 320} |
-| Transport | ${transport = 90} |
-| Insurance | ${insurance = 60} |
-| Eating out | ${eatingOut = 160} |
+${rent = 1150} 
+${utilities = 180}
+${groceries = 320}
+${transport = 90}
+${insurance = 60}
+${eatingOut = 160} |
 | Hobbies | ${hobbies = 120} |
 | Subscriptions | ${subscriptions = 35} |
 
