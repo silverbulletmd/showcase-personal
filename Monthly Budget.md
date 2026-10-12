@@ -30,7 +30,7 @@ Savings rate: ${string.format("%.1f%%", savingsRate)}
 ${surplus < 0 and "Over budget: reduce spending before planning a savings contribution." or "I’m putting the monthly surplus toward my emergency fund."}
 
 # How this works
-The inputs above are page variables. This `page-lua` block calculates derived values on this page; [[Emergency Fund]] reads them with `pageVars.get()`. The euro formatter comes from Space Lua in [[Library/Money]].
+The inputs above are page variables. This `page-lua` block calculates derived values on this page; [[Emergency Fund]] reads them with `pageVars.all()`. The euro formatter comes from Space Lua in [[Library/Money]].
 
 ```page-lua
 expenses = rent + utilities + groceries + transport + insurance + eatingOut + hobbies + subscriptions

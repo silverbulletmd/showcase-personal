@@ -28,7 +28,7 @@ ${fund.forecast}
 
 # Try a small win
 ${widgets.button("Save another €100", function()
-  pageVars.set("saved", pageVars.get("Emergency Fund").saved + 100, "Emergency Fund")
+  pageVars.set("saved", pageVars.get("saved", "Emergency Fund") + 100, "Emergency Fund")
 end)}
 
 ${widgets.button("Reset example savings", function()
@@ -38,9 +38,9 @@ end)}
 Try saving €100: the fund card and forecast update, and the amount is saved on [[Emergency Fund]]. Then reset the example or change rent on [[Monthly Budget]] to see the effect across all three pages.
 
 # How this works
-These are ordinary Markdown pages with live calculations. Page Lua keeps each worksheet’s inputs and formulas in its own scope. This page reads both with `pageVars.get()`; the buttons write to another page with `pageVars.set()`. Space Lua in [[Library/Money]] supplies one shared currency formatter.
+These are ordinary Markdown pages with live calculations. Page Lua keeps each worksheet’s inputs and formulas in its own scope. This page reads both with `pageVars.all()`; the buttons write to another page with `pageVars.set()`. Space Lua in [[Library/Money]] supplies one shared currency formatter.
 
 ```page-lua
-budget = pageVars.get("Monthly Budget")
-fund = pageVars.get("Emergency Fund")
+budget = pageVars.all("Monthly Budget")
+fund = pageVars.all("Emergency Fund")
 ```

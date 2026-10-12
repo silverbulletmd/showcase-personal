@@ -29,7 +29,7 @@ This projection assumes the budget stays the same and ignores interest. Change t
 
 # Try it
 ${widgets.button("Save another €100", function()
-  pageVars.set("saved", pageVars.get().saved + 100)
+  pageVars.set("saved", pageVars.get("saved") + 100)
 end)}
 
 ${widgets.button("Reset example savings", function()
@@ -42,7 +42,7 @@ The buttons update the saved amount in this page’s Markdown. They are a way to
 The budget is read from another page. Its essential expenses set the target, and its surplus sets the contribution. Editing either page recalculates this projection. The buttons use `pageVars.set()` to rewrite the plain `saved` input above.
 
 ```page-lua
-budget = pageVars.get("Monthly Budget")
+budget = pageVars.all("Monthly Budget")
 target = math.max(0, targetMonths * budget.essentials)
 remaining = math.max(0, target - saved)
 contribution = math.max(0, budget.surplus)
