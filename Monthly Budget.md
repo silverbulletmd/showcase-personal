@@ -16,9 +16,9 @@ ${utilities = 180}
 ${groceries = 320}
 ${transport = 90}
 ${insurance = 60}
-${eatingOut = 160} |
-| Hobbies | ${hobbies = 120} |
-| Subscriptions | ${subscriptions = 35} |
+${eatingOut = 160}
+${hobbies = 120}
+${subscriptions = 35}
 
 # Where that leaves me
 Monthly spending: ${money.euros(expenses)}
