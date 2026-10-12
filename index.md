@@ -27,6 +27,9 @@ ${query[[
   select templates.pageItem(p)
 ]]}
 
+# [[Money]]
+My [[Monthly Budget|monthly budget]] and [[Emergency Fund|emergency fund]] are linked worksheets: change a number on one page and see the others recalculate.
+
 # People
 ${query[[
   from p = index.contentPages "person"
@@ -56,3 +59,4 @@ Plain markdown pages, plus a few SilverBullet features:
 * [Linked Mentions](https://docs.silverbullet.md/Linked%20Mention): every person and project page shows where it was mentioned, without any extra work.
 * [Page templates](https://docs.silverbullet.md/Page%20Template): new book notes start from [[Library/Page Templates/Book]].
 * [Space Lua](https://docs.silverbullet.md/Space%20Lua) and [Space Style](https://docs.silverbullet.md/Space%20Style): the greeting, quick actions and tiles are small widgets in [[Library/Home]].
+* [Page Lua](https://docs.silverbullet.md/Space%20Lua/Page%20Lua): [[Money]] connects two finance worksheets with page variables, formulas and buttons that update the saved Markdown.
