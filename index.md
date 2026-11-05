@@ -1,6 +1,3 @@
----
-tags:
----
 
 ${home.greeting "Sam"}
 
