@@ -1,5 +1,3 @@
-#meta
-
 Sam’s home page: a greeting, buttons for the things he does every day, and a few numbers about his space.
 
 # Implementation

@@ -1,5 +1,3 @@
-#meta
-
 Space configuration: the page picker docked on the left, an icon for books, ideas and people, and clicking a tag opens the page that collects it.
 
 ```space-lua

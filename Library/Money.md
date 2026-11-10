@@ -1,5 +1,3 @@
-#meta
-
 Shared formatting for [[Money]], [[Monthly Budget]] and [[Emergency Fund]]. The calculations live on the pages themselves.
 
 ```space-lua
