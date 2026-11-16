@@ -88,11 +88,6 @@ end
 
 # Style
 ```space-style
-/* Sam’s accent colour, used by SilverBullet’s own UI too */
-html:root {
-  --ui-accent-color: #2563eb;
-}
-
 /* Let the home widgets sit on the page without the usual widget frame */
 .sb-lua-directive-block:has(.home) {
   border: none !important;
@@ -101,32 +96,22 @@ html:root {
 
 /* Greeting and date */
 .home-greeting h1 {
-  font-size: 2.2em;
-  font-weight: 600;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin: 0.2em 0 0;
-  color: #172554;
 }
 .home-greeting p {
   margin: 0.1em 0 0;
-  color: #78716c;
+  color: var(--subtle-color);
 }
 
-/* The row of buttons */
+/* The row of buttons: styled by the built-in look */
 .home-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 4px 0;
-}
-.home-action {
-  font: inherit;
-  font-size: 0.85em;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid #bfdbfe;
-  background: #eff6ff;
-  color: #1e40af;
-  cursor: pointer;
 }
 
 /* Stat tiles, with a wide “Reading now” tile below them */
@@ -138,39 +123,54 @@ html:root {
 .home-tile {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 12px 14px;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--ui-surface-border-color);
   border-radius: 12px;
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
-  color: #1e3a8a !important;
+  background: var(--ui-accent-surface-color);
+  color: var(--root-color) !important;
   text-decoration: none !important;
+  cursor: pointer;
+}
+.home-tile:hover {
+  border-color: var(--tone-accent-soft);
+  background: var(--tone-accent-soft);
 }
 .home-tile strong {
-  font-size: 2em;
+  font-size: 1.9em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1;
+  color: var(--ui-accent-text-color);
+  font-variant-numeric: tabular-nums;
 }
-.home-tile span {
-  font-size: 0.8em;
-  color: #1d4ed8;
+.home-tile > span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--subtle-color);
 }
 .home-tile-wide {
   grid-column: 1 / -1;
   flex-direction: row;
   align-items: baseline;
   gap: 10px;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  border-color: transparent;
+  background: var(--ui-accent-color);
 }
-.home-tile-wide span,
-.home-tile-wide em {
-  color: #fff !important;
+.home-tile-wide:hover {
+  border-color: transparent;
+  background: var(--ui-accent-strong-color);
+}
+.home-tile-wide > span,
+.home-tile-wide > em {
+  color: var(--ui-accent-contrast-color) !important;
+}
+.home-tile-wide > span {
+  opacity: 0.8;
 }
 .home-tile-wide em {
   font-size: 1.05em;
+  font-style: normal;
   font-weight: 600;
-}
-
-/* Widget links navigate on click, so give them a pointer */
-.home a {
-  cursor: pointer;
 }
 ```

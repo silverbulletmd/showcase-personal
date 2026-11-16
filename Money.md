@@ -38,9 +38,7 @@ end)}
 Try saving €100: the fund card and forecast update, and the amount is saved on [[Emergency Fund]]. Then reset the example or change rent on [[Monthly Budget]] to see the effect across all three pages.
 
 # How this works
-These are ordinary Markdown pages with live calculations. Page Lua keeps each worksheet’s inputs and formulas in its own scope. This page reads both with `pageVars.all()`; the buttons write to another page with `pageVars.set()`. Space Lua in [[Library/Money]] supplies one shared currency formatter.
+These are ordinary Markdown pages with live calculations. Each worksheet keeps its inputs and formulas in its own page variables. This page reads both with `pageVars.all()` into the hidden `local` values below; the buttons write to another page with `pageVars.set()`. Space Lua in [[Library/Money]] supplies one shared currency formatter.
 
-```page-lua
-budget = pageVars.all("Monthly Budget")
-fund = pageVars.all("Emergency Fund")
-```
+${local budget = pageVars.all("Monthly Budget")}
+${local fund = pageVars.all("Emergency Fund")}

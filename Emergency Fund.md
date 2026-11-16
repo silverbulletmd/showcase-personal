@@ -39,20 +39,13 @@ end)}
 The buttons update the saved amount in this page’s Markdown. They are a way to try the worksheet.
 
 # How this works
-The budget is read from another page. Its essential expenses set the target, and its surplus sets the contribution. Editing either page recalculates this projection. The buttons use `pageVars.set()` to rewrite the plain `saved` input above.
+The budget is read from another page. Its essential expenses set the target, and its surplus sets the contribution. Editing either page recalculates this projection. The buttons use `pageVars.set()` to rewrite the plain `saved` input above. The `local` values below do the math without showing it.
 
-```page-lua
-budget = pageVars.all("Monthly Budget")
-target = math.max(0, targetMonths * budget.essentials)
-remaining = math.max(0, target - saved)
-contribution = math.max(0, budget.surplus)
-progress = target > 0 and saved / target or 1
-if remaining == 0 then
-  forecast = "Target reached — the cushion is in place."
-elseif contribution > 0 then
-  monthsToGoal = math.ceil(remaining / contribution)
-  forecast = "At this pace: " .. monthsToGoal .. " more months to reach the target."
-else
-  forecast = "No monthly surplus available. Adjust the budget to make room for saving."
-end
-```
+${local budget = pageVars.all("Monthly Budget")}
+${local target = math.max(0, targetMonths * budget.essentials)}
+${local remaining = math.max(0, target - saved)}
+${local contribution = math.max(0, budget.surplus)}
+${local progress = target > 0 and saved / target or 1}
+${local forecast = remaining == 0 and "Target reached — the cushion is in place."
+  or contribution > 0 and "At this pace: " .. math.ceil(remaining / contribution) .. " more months to reach the target."
+  or "No monthly surplus available. Adjust the budget to make room for saving."}
