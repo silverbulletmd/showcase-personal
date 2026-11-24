@@ -1,4 +1,4 @@
-Sam’s home page: a greeting, buttons for the things he does every day, and a few numbers about his space.
+Sam’s home page: a greeting and a few numbers about his space. The buttons for the things he does every day are built-in command buttons, right on [[index]].
 
 # Implementation
 ```space-lua
@@ -19,24 +19,6 @@ function home.greeting(name)
     class = "home home-greeting",
     dom.h1 { "Good " .. part .. ", " .. name },
     dom.p { date },
-  })
-end
-
-local function action(label, command)
-  return dom.button {
-    class = "home-action",
-    onclick = function()
-      editor.invokeCommand(command)
-    end,
-    label,
-  }
-end
-
-function home.actions()
-  return widget.htmlBlock(dom.div {
-    class = "home home-actions",
-    action("Quick note", "Quick Note"),
-    action("Today’s journal", "Journal: Today"),
   })
 end
 
@@ -104,14 +86,6 @@ end
 .home-greeting p {
   margin: 0.1em 0 0;
   color: var(--subtle-color);
-}
-
-/* The row of buttons: styled by the built-in look */
-.home-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 4px 0;
 }
 
 /* Stat tiles, with a wide “Reading now” tile below them */
